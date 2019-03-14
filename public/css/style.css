@@ -1,0 +1,22 @@
+.container-content{
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.842);
+}
+.form-inline-block{
+    display: inline-block;
+}
+.footer{
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 50px;
+}
+.comment{
+    padding: 10px;
+    background-color: #c9e0fdea;
+    margin: 10px 0;
+}
+.topic{
+    padding: 10px;
+    background-color: #c9e0fdea;
+    margin: 10px 0;
+}
