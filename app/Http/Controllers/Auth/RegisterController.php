@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Flashy;
+use App\Notifications\RegisterUser;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -41,6 +45,26 @@ class RegisterController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        // $this->guard()->login($user);
+
+        $user->notify(new RegisterUser());
+
+        // return $this->registered($request, $user)
+        //                 ?: redirect($this->redirectPath());
+        // Flashy::message("Votre compte a bien été crée, vous devez le confirmer avec l'email que vous allez recevoir");
+        return redirect('/login')->with('success',"Votre compte a bien été crée, vous devez le confirmer avec l'email que vous allez recevoir");
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -67,7 +91,18 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'confirmation_token' => bcrypt(str_random(10))
+            'confirmation_token' => str_replace('/', '',bcrypt(str_random(16)))
         ]);
+    }
+
+    public function confirm($id, $token){
+        $user = User::where('id',$id)->where('confirmation_token',$token)->first();
+        if($user){
+            $user->update(['confirmation_token' => null]);
+            $this->guard()->login($user);
+            return redirect($this->redirectPath())->with('success', "Votre compte a bien été confirmé");
+        }else{
+            return redirect('/login')->with('error',"Ce lien ne semble plus valide !");
+        }
     }
 }

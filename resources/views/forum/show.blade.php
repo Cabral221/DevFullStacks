@@ -25,7 +25,7 @@
 <div class="row justify-content">
     <div class="col-md-8 col-md-offset-2 col-sm-10-col-sm-offset-1">
     {{-- Formulaire de commentaire --}}
-    <form action="{{ route('blog.comment.store',$topic) }}" method="POST">
+    <form action="{{ route('forum.comment.store',$topic) }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
             <label for="comment" class="control-label sr-only">commentaire</label>
@@ -49,12 +49,12 @@
         @foreach ($comments as $comment)
             <div class="comment">
             <blockquote class="blockquote">
-                <footer class="blockquote-footer">{{ $comment->user->name }} -- <cite title="Source Title">{{ $comment->updated_at }}</cite></footer>
+                <footer class="blockquote-footer">{{ $comment->user->name }} -- <cite title="Source Title">{{ $formatDate($comment->updated_at) }}</cite></footer>
                 <p class="mb-0"><small>{{ $comment->comment }}</small></p>
                 @if (!Auth::guest())
-                    @if (Auth::user()->role && Auth::user()->id == $post->user_id)  
+                    @if (Auth::user()->role && Auth::user()->id == $topic->user_id)  
                         <div class="action">
-                            <form action="{{ route('blog.comment.destroy',['post'=>$post,'comment'=>$comment]) }}" method="POST" class="form-inline-block">
+                            <form action="{{ route('forum.comment.destroy',['topic'=>$topic,'comment'=>$comment]) }}" method="POST" class="form-inline-block">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <input type="submit" value="Supprimer" class="btn btn-danger">

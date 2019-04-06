@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Comments;
 
+use Flashy;
 use Illuminate\Http\Request;
+use App\Models\Forum;
+use App\Models\CommentsForum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentsPostRequest;
 
 class CommentsForumController extends Controller
 {
@@ -33,9 +37,16 @@ class CommentsForumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentsPostRequest $comment,Forum $topic)
     {
-        //
+        // dd($topic);
+        $com = new CommentsForum;
+        $com->user_id = $comment->user()->id;
+        $com->comment = $comment->comment;
+        $topic->comments()->save($com);
+      
+        Flashy::message("Merci de votre commentaire");
+        return redirect()->route('forum.show',$topic);
     }
 
     /**

@@ -20,3 +20,6 @@
     background-color: #c9e0fdea;
     margin: 10px 0;
 }
+.card-body > a{
+    text-decoration: none;
+}

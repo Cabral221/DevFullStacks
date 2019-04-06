@@ -53,4 +53,6 @@ Route::resource('/e-learning','CoursesController',['parameters' => [
 // Partie d'authentification
 Auth::routes();
 
+Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm');
+
 Route::get('/home', 'HomeController@index')->name('home');

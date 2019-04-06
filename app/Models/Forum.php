@@ -9,13 +9,13 @@ class Forum extends Model
     protected $fillable = ['topic'];
 
 
-    // /**
-    //  * Get the comments for the blog post.
-    //  */
-    // public function comments()
-    // {
-    //     return $this->hasMany('App\Models\CommentsPost');
-    // }
+    /**
+     * Get the comments for the topic forum.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\CommentsForum');
+    }
 
     /**
      * Get the post that owns the comment.
