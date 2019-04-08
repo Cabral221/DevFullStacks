@@ -22,9 +22,16 @@
                    <p> {{ $post->body }} </p>
                 </div>
                 <a class="btn btn-primary" href="{{ route('blog.show',$post->slug) }}">Lire la suite</a>
-                <a href="" class="btn btn-link">
-                    <i class="far fa-thumbs-up"></i>
-                    <span class="js-likes">10</span>
+                <a href="{{ route('post_like',$post->slug) }}" class="btn btn-link js-like">
+                    @if (auth()->user() && $post->isLikeByUser(auth()->user()))
+                        <i class="fas fa-thumbs-up"></i>
+                        <span class="js-likes">{{ count($post->likes) }}</span>
+                        <span class="js-label">Je n'aime plus</span>
+                    @else
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="js-likes">{{ count($post->likes) }}</span>
+                        <span class="js-label">J'aime</span>
+                    @endif
                 </a>
             </div>
         </div>
@@ -40,3 +47,7 @@
     <p>Aucun article</p>
 @endif
 @stop
+
+@section('javascript')
+    <script src="{{ asset('js/jslike.js') }}"></script>    
+@endsection

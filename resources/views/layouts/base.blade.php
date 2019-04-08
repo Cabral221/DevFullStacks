@@ -15,6 +15,7 @@
     
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.css') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -99,6 +100,7 @@
     {{-- </div> --}}
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     {{-- <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script> --}}
+    @yield('javascript')
     @include('flashy::message')
 </body>
 </html>

@@ -33,6 +33,10 @@ Route::resource('blog.comment','Comments\CommentsPostController',['parameters'=>
     'blog'=>'post'
 ]]);
 
+Route::get('/post/{post}/like',[
+    'as' => 'post_like',
+    'uses' => 'PostsController@like'
+]);
 
 // partie Forum de l'appli
 Route::resource('forum','ForumsController',['parameters'=>[

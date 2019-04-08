@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\CommentsForum');
     }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Models\PostsLikes');
+    }
 }
