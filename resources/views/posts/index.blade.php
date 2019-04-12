@@ -11,15 +11,15 @@
 
 <h4>Nos Articles</h4>
 @if (! $posts->isEmpty())
-    <div class="row">
+    <div class="row text-center">
         @foreach ($posts as $post)
-        <div class="col-4 mb-4">
+        <div class="col-4 mb-4 text-left">
             <div class="border border-dark rounded p-2">
                 <div class="card-header">
                    <h3> {{ $post->title }} </h3>
                 </div>
                 <div class="card-text">
-                   <p> {{ $post->body }} </p>
+                   <p> {{ $post->introduce }} </p>
                 </div>
                 <a class="btn btn-primary" href="{{ route('blog.show',$post->slug) }}">Lire la suite</a>
                 <a href="{{ route('post_like',$post->slug) }}" class="btn btn-link js-like">

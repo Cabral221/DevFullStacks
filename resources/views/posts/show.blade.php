@@ -1,12 +1,26 @@
 @extends('layouts.base',['title'=>$post->title])
 
 @section('container')
-<div class="rov justify-content-center">
+<div class="justify-content-center">
 <p><h2>Interface Blog</h2></p>
 <div class="blog-post">
     <h3 class="blog-post-title">{{ $post->title }}</h3>
-    <p class="blog-post-meta">postée le {{ $post->created_at }}</p>
+    <p class="blog-post-meta">publié le {{ $post->created_at }}</p>
+    <p>{{ $post->introduce }}</p>
     <p>{{ $post->body }}</p>
+    <div class="vote text-center">
+        <a href="{{ route('post_like',$post->slug) }}" class="btn btn-link js-like">
+            @if (auth()->user() && $post->isLikeByUser(auth()->user()))
+                <i class="fas fa-thumbs-up"></i>
+                <span class="js-likes">{{ count($post->likes) }}</span>
+                <span class="js-label">Je n'aime plus</span>
+            @else
+                <i class="far fa-thumbs-up"></i>
+                <span class="js-likes">{{ count($post->likes) }}</span>
+                <span class="js-label">J'aime</span>
+            @endif
+        </a>
+    </div>
 </div>
 
 @if (!Auth::guest())
@@ -21,7 +35,7 @@
     @endif
 @endif
 <hr>
-<div class="col-md-8 col-md-offset-2 col-sm-10-col-sm-offset-1">
+<div class="col-md-8 col-md-offset-4 col-sm-10 col-sm-offset-2">
     {{-- Formulaire de commentaire --}}
     <form action="{{ route('blog.comment.store',$post) }}" method="POST">
         {{ csrf_field() }}
@@ -38,9 +52,9 @@
             @endif
         </div>
     </form>
-    
     {{-- Liste des commentaires --}}
     @if (! $comments->isEmpty())
+    <h4>#{{ $comments->count()}} commentaires</h4>
         @foreach ($comments as $comment)
             <div class="comment">
             <blockquote class="blockquote">
@@ -66,3 +80,6 @@
 </div>
 </div>
 @stop
+@section('javascript')
+    <script src="{{ asset('js/jslike.js') }}"></script>    
+@endsection

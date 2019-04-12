@@ -26,7 +26,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
         //  dd(auth()->user());
         return view('posts.index', compact('posts'));
     }
@@ -70,9 +70,12 @@ class PostsController extends Controller
     public function show(Post $post)
     {
 
-        $comments = CommentsPost::with('user')->where(['post_id'=>$post->id])
-                                ->orderBy('created_at', 'desc')->paginate(5);  
-        return view('posts.show',['post'=>$post,'comments'=>$comments]);
+        $comments = CommentsPost::with('user')->where(['post_id'=>$post->id])->orderBy('created_at', 'desc')->paginate(5);
+        // dd($nbComments);
+        return view('posts.show',[
+            'post'=>$post,
+            'comments'=>$comments
+        ]);
     }
 
     /**
