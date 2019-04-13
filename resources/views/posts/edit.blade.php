@@ -13,6 +13,11 @@
                 <input type="text" name="title" id="title" class="form-control  {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ?? $post->title }}" required>
                 {!! $errors->first('title','<span class="help-block">:message</span>') !!}
             </div>
+            <div class="form-group {{ $errors->has('introduce') ? 'has-error' : '' }}">
+                <label for="introduce" class="control-label">Introduction</label>
+                <textarea name="introduce" id="introduce" cols="10" rows="3" class="form-control" required>{{ old('introduce') ?? $post->introduce }}</textarea>
+                {!! $errors->first('introduce','<span class="help-block">:message</span>') !!}                
+            </div>
             <div class="form-group">
                 <label for="body" class="col-form-label">Contenu</label>
                 <textarea name="body" id="body" cols="10" rows="10" class="form-control {{ $errors->has('body') ? 'is-invalid ' : '' }}" required>{{ old('body') ?? $post->body }}</textarea>

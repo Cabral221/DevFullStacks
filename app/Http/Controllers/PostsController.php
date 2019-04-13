@@ -53,7 +53,11 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $data = ['title' => $request->title,'body'  => $request->body];
+        $data = [
+            'title' => $request->title,
+            'introduce' => $request->introduce,
+            'body'  => $request->body,
+        ];
 
         auth()->user()->posts()->create($data); 
 
@@ -104,6 +108,7 @@ class PostsController extends Controller
     {
         $post->update([
             'title' => $request->title,
+            'introduce' => $request->introduce,
             'body'  => $request->body,
         ]);
         Flashy::message("L'article a été modifié avec succes");

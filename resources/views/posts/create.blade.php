@@ -12,6 +12,11 @@
                 <input type="text" name="title" id="title" class="form-control" required>
                 {!! $errors->first('title','<span class="help-block">:message</span>') !!}
             </div>
+            <div class="form-group {{ $errors->has('introduce') ? 'has-error' : '' }}">
+                <label for="introduce" class="control-label">Introduction</label>
+                <textarea name="introduce" id="introduce" cols="10" rows="3" class="form-control" required></textarea>
+                {!! $errors->first('introduce','<span class="help-block">:message</span>') !!}                
+            </div>
             <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
                 <label for="body" class="control-label">Contenu</label>
                 <textarea name="body" id="body" cols="10" rows="10" class="form-control" required></textarea>
