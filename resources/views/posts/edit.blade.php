@@ -5,7 +5,7 @@
 <h2>Modification d'evenement</h2>
 <div class="row justify-content-center">
     <div class="col-md-8 col-md-offset-2 col-sm-10-col-sm-offset-1">
-        @include('form')
+         @include('posts.form')
     </div>
 </div>
 

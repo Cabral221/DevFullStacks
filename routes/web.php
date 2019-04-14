@@ -65,5 +65,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Partie d'administration
 Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
-    Route::resource('blog','PostsController');
+    Route::resource('posts','PostsController');
 });

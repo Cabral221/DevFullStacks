@@ -35,7 +35,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
+                      </li>      
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('forum.index') }}">Forum</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('e-learning.index') }}">E-Learning</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,6 +85,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <div class="container">
+            @yield('container')
+        </div>
     </div>
 </body>
 </html>
