@@ -4,10 +4,10 @@
 <div class="justify-content-center">
 <p><h2>Interface Blog</h2></p>
 <div class="blog-post">
-    <h3 class="blog-post-title">{{ $post->title }}</h3>
+    <h3 class="blog-post-title">{!! $post->title !!}</h3>
     <p class="blog-post-meta">publié le {{ $post->created_at }}</p>
-    <p>{{ $post->introduce }}</p>
-    <p>{{ $post->body }}</p>
+    <p>{!! $post->introduce !!}</p>
+    <p>{!! $post->body !!}</p>
     <div class="vote text-center">
         <a href="{{ route('post_like',$post->slug) }}" class="btn btn-link js-like">
             @if (auth()->user() && $post->isLikeByUser(auth()->user()))

@@ -60,3 +60,10 @@ Auth::routes();
 Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+// Partie d'administration
+Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
+    Route::resource('blog','PostsController');
+});

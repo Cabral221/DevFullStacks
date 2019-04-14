@@ -1,18 +1,9 @@
-@extends('layouts.base',['title'=>'Blog'])
+@extends('layouts.base')
 
 @section('container')
-<p><h2>Interface Blog</h2></p>
-
-@if (!Auth::guest())
-    @if (Auth::user()->role)  
-    <a href="{{ route('blog.create') }}" class="btn btn-primary">Créer un article</a>
-    @endif
-@endif
-
-<h4>Nos Articles</h4>
-@if (! $posts->isEmpty())
-    <div class="row text-center">
-        @foreach ($posts as $post)
+    <p>Bonjour</p>
+    <div class="row">
+    @foreach ($posts as $post)
         <div class="col-4 mb-4 text-left">
             <div class="border border-dark rounded p-2">
                 <div class="card-header">
@@ -38,19 +29,6 @@
                 </a>
             </div>
         </div>
-        @endforeach
+    @endforeach
     </div>
-    {{-- <ul>
-         @foreach ($posts as $post)
-            <li><a href="{{ route('blog.show',$post->slug) }}">{{ $post->title }}</a></li>
-        @endforeach
-    </ul> --}}
-    {{ $posts->links() }}
-@else
-    <p>Aucun article</p>
-@endif
-@stop
-
-@section('javascript')
-    <script src="{{ asset('js/jslike.js') }}"></script>    
 @endsection

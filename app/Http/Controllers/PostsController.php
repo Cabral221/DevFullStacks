@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Flashy;
 use App\Models\Post;
+use App\Models\Category;
 use App\Models\PostsLikes;
 use App\User;
 use App\Models\CommentsPost;
@@ -26,7 +27,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+        $posts = Post::with('category')->published()->orderBy('created_at', 'desc')->paginate(6);
         //  dd(auth()->user());
         return view('posts.index', compact('posts'));
     }
@@ -42,7 +43,10 @@ class PostsController extends Controller
             Flashy::error("Vous etes pas autorisé à effectuer cette action");
             return redirect()->route('blog.index');
         }
-        return view('posts.create');
+        $post = new Post();
+        $categories = Category::all('name','id');
+
+        return view('posts.create',compact('post','categories'));
     }
 
     /**
@@ -57,6 +61,7 @@ class PostsController extends Controller
             'title' => $request->title,
             'introduce' => $request->introduce,
             'body'  => $request->body,
+            'online' => $request->online,
         ];
 
         auth()->user()->posts()->create($data); 
@@ -73,7 +78,11 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-
+        // dd($post->published());
+        
+        if(!$post->published()){            
+            return redirect()->route('blog.index');
+        }
         $comments = CommentsPost::with('user')->where(['post_id'=>$post->id])->orderBy('created_at', 'desc')->paginate(5);
         // dd($nbComments);
         return view('posts.show',[
@@ -94,7 +103,11 @@ class PostsController extends Controller
             Flashy::error("Vous etes pas autorisé à effectuer cette action");
             return redirect()->route('blog.index');
         }
-        return view('posts.edit',compact('post'));
+        $categories = Category::all('name','id');
+        // foreach ($categories as $key => $value) {
+        //     // dd($value->id);
+        //     }
+        return view('posts.edit',compact('post','categories'));
     }
 
     /**
@@ -106,10 +119,12 @@ class PostsController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+        // dd($request->online);
         $post->update([
             'title' => $request->title,
             'introduce' => $request->introduce,
             'body'  => $request->body,
+            'online' => $request->online,
         ]);
         Flashy::message("L'article a été modifié avec succes");
         return redirect()->route('blog.show',$post);

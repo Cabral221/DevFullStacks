@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title','introduce','body'];
+    protected $fillable = ['title','introduce','body','online','category_id'];
 
     public function getRouteKeyName()
     {
@@ -21,6 +21,19 @@ class Post extends Model
         static::creating(function($post){
             $post->slug = Str::slug($post->title);
         });
+    }
+
+
+    public function scopePublished($query){
+        return $query->where('online',true);
+    }
+
+    public function getDates(){
+        return ['created_at','updated_at','published_at'];
+    }
+
+    public function category(){
+        return $this->belongsTo('App\Models\Category');
     }
 
     /**
