@@ -62,6 +62,7 @@ class PostsController extends Controller
             'introduce' => $request->introduce,
             'body'  => $request->body,
             'online' => $request->online,
+            'category_id' => $request->category_id
         ];
 
         auth()->user()->posts()->create($data); 
@@ -120,12 +121,7 @@ class PostsController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         // dd($request->online);
-        $post->update([
-            'title' => $request->title,
-            'introduce' => $request->introduce,
-            'body'  => $request->body,
-            'online' => $request->online,
-        ]);
+        $post->update($request->all());
         Flashy::message("L'article a été modifié avec succes");
         return redirect()->route('blog.show',$post);
     }

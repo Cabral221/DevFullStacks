@@ -11,6 +11,11 @@
 |
 */
 // Partie des pages static
+
+// Test de l'attachement des fichier
+Route::post('/attachments','AttachmentController@store')->name('attachments.store');
+//fin du test
+
 Route::get('/',[
     'as' => 'index',
     'uses' => 'PagesController@home'

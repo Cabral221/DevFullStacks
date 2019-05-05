@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.css') }}">
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -76,7 +76,11 @@
                 </div>
             </div>
         </nav> --}}
+
+        {{-- j'importe le navbar --}}
         @include('partials/navbar')
+        {{-- Fin d'importation du navbar --}}
+
         <div class="container container-content">
             @if (session('success'))
                 <div class="container">
@@ -101,6 +105,7 @@
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     {{-- <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script> --}}
     @yield('javascript')
+    
     @include('flashy::message')
 </body>
 </html>

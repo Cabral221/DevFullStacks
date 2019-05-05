@@ -21,6 +21,7 @@ function onClickBtnLike(event) {
         }
     }).catch(function (error) {
         if (error.response.status === 401) {
+            // A modifie
             window.alert("Vous ne pouvez pas aimer un article si vous n'êtes pas connecter !");
         } else {
             window.alert("Une erreur s'est produite, réessayez plus tard.");

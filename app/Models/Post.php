@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\User;
+use App\Models\Concerns\AttachableConcern;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    // use AttachableConcern;
+
     protected $fillable = ['title','introduce','body','online','category_id'];
 
     public function getRouteKeyName()
@@ -71,6 +74,10 @@ class Post extends Model
             if($like->user_id == $user->id) return true;
         }
         return false;
+    }
+
+    public function attachments (){
+        return $this->morphMany(Attachment::class,'attachable');
     }
 
 }

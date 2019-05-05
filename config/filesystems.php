@@ -50,8 +50,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => (env('APP_ENV') == 'testing') ? base_path('tests/fixtures') : public_path(),
+            'url' => env('APP_URL'),
             'visibility' => 'public',
         ],
 
