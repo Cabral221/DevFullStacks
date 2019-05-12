@@ -36,7 +36,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Badge\\": "lib/badge/src/"
         },
         "files": [
             "app/Helpers/Helpers.php"

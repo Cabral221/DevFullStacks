@@ -65,6 +65,20 @@
                             </li>
                         @endif
                     @else
+                        <li class="dropdown nav-item">
+                          <a id="navbarDropdown" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span class="glyphicon glyphicon-bell"><i class="fa fa-bell" aria-hidden="true"></i></span>
+                            <span class="badge badge-success">{{ Auth::user()->unreadNotifications->count() }}</span>
+                          </a>
+                          <ul class="dropdown-menu list-group dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @foreach (Auth::user()->unreadNotifications as $notification)
+                                {{-- <li>{{ ($notification->type)->toText($notification->data) }}</li> --}}
+                                <a href="{{ route('notifications.show',['id'=>$notification->id]) }}" class="dropdown-item">
+                                <li>{{ ($notification->type)::toText($notification->data) }}</li>
+                                </a>
+                            @endforeach
+                          </ul>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>

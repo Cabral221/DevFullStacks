@@ -57,6 +57,9 @@ Route::resource('/e-learning','CoursesController',['parameters' => [
     'e-learning' => 'cours'
 ]]);
 
+// Partie notification Route
+Route::resource('/notifications', 'NotificationsController',['only'=> ['show']]);
+
 
 
 // Partie d'authentification
