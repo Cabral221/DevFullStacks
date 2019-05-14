@@ -57,6 +57,7 @@ Route::resource('/e-learning','CoursesController',['parameters' => [
     'e-learning' => 'cours'
 ]]);
 
+
 // Partie notification Route
 Route::resource('/notifications', 'NotificationsController',['only'=> ['show']]);
 
@@ -67,7 +68,8 @@ Auth::routes();
 
 Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'UserController@index')->name('home');
+Route::post('/update_avatar', 'UserController@update_avatar')->name('update_avatar');
 
 
 

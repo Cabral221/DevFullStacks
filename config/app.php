@@ -168,6 +168,7 @@ return [
         MercurySeries\Flashy\FlashyServiceProvider::class,
         MercurySeries\Helpers\HelpersServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,6 +232,7 @@ return [
 
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

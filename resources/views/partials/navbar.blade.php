@@ -44,12 +44,6 @@
                       </li>
 
 
-
-
-
-
-
-
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -65,31 +59,36 @@
                             </li>
                         @endif
                     @else
-                        <li class="dropdown nav-item">
+                        <li class="nav-item dropdown">
                           <a id="navbarDropdown" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <span class="glyphicon glyphicon-bell"><i class="fa fa-bell" aria-hidden="true"></i></span>
                             <span class="badge badge-success">{{ Auth::user()->unreadNotifications->count() }}</span>
                           </a>
-                          <ul class="dropdown-menu list-group dropdown-menu-right" aria-labelledby="navbarDropdown">
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @foreach (Auth::user()->unreadNotifications as $notification)
                                 {{-- <li>{{ ($notification->type)->toText($notification->data) }}</li> --}}
                                 <a href="{{ route('notifications.show',['id'=>$notification->id]) }}" class="dropdown-item">
                                 <li>{{ ($notification->type)::toText($notification->data) }}</li>
                                 </a>
                             @endforeach
-                          </ul>
+                          </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position: relative; padding-left: 50px;">
+                              <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width: 32px;height:32px;postion:absolute; top:10px; left:10px;border-radius:50%;">  
+                              {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('home') }}">Tableau de bord</a>
+                                
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                  <i class="fa fa-btn fa-user" aria-hidden="true"></i> Tableau de bord
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     {{ __('Deconnexion') }}
                                 </a>
 
