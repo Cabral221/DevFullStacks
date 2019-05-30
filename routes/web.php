@@ -65,15 +65,27 @@ Route::resource('/notifications', 'NotificationsController',['only'=> ['show']])
 
 // Partie d'authentification
 Auth::routes();
-
+Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::get('/confirm/{id}/{token}','Auth\RegisterController@confirm');
-
 Route::get('/home', 'UserController@index')->name('home');
 Route::post('/update_avatar', 'UserController@update_avatar')->name('update_avatar');
 
 
 
 // Partie d'administration
-Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
-    Route::resource('posts','PostsController');
+// Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
+//     Route::resource('posts','PostsController');
+// });
+
+Route::prefix('admin')->group(function() {
+    Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
+    Route::get('/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Admin\Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/logout', 'Admin\Auth\AdminLoginController@logout')->name('admin.logout');
+
+    //Reset Password
+    Route::get('/password/reset', 'Admin\Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('/password/email', 'Admin\Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    Route::post('/password/reset', 'Admin\Auth\AdminResetPasswordController@reset')->name('admin.password.update');
+    Route::get('/password/reset/{token}', 'Admin\Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });

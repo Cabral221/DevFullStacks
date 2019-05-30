@@ -15,7 +15,7 @@
         <select name="category_id" id="category_id" class="form-control">
             <option default>Selectionner....</option>
             @foreach ($categories as $category)
-                <option class="form->control" value="{{ $category->id }}" {{ ($post->category_id == $category->id) ? 'selected' : '' }} >{{ $category->name }}</option>
+                <option class="form-control" value="{{ $category->id }}" {{ ($post->category_id == $category->id) ? 'selected' : '' }} >{{ $category->name }}</option>
             @endforeach
         </select>
     </div>
