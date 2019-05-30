@@ -8,7 +8,7 @@
 @endif
 
 <hr>
-<div class="row justify-content-center">
+<div class="justify-content-center">
     <div class="col-md-2">
         {{ $topic->user->name }}
         {{ $formatDate($topic->created_at) }}
@@ -17,9 +17,6 @@
         <div class="topic">
             {{ $topic->topic }}
         </div>
-    </div>
-    <div class="col-md-2">
-        Résolue
     </div>
 </div>
 <div class="row justify-content">
@@ -43,9 +40,10 @@
     </div> 
 </div>
 
-<div class="row justify-content">
+<div class="justify-content">
     {{-- Liste des commentaires --}}
     @if (! $comments->isEmpty())
+    <h4>#{{ $comments->count() }} commentaires</h4>
         @foreach ($comments as $comment)
             <div class="comment">
             <blockquote class="blockquote">

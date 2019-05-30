@@ -91,7 +91,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'confirmation_token' => str_replace('/', '',bcrypt(str_random(16)))
+            'confirmation_token' => str_replace('/', '',bcrypt(str_random(16))),
         ]);
     }
 

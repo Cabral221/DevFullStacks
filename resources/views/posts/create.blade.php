@@ -5,22 +5,7 @@
 <h2>Création d'article</h2>
 <div class="row justify-content-center">
     <div class="col-md-8 col-md-offset-2 col-sm-10-col-sm-offset-1">
-        <form action="{{ route('blog.store') }}" method="POST">
-            {{ csrf_field() }}
-            <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                <label for="title" class="control-label">Titre</label>
-                <input type="text" name="title" id="title" class="form-control" required>
-                {!! $errors->first('title','<span class="help-block">:message</span>') !!}
-            </div>
-            <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
-                <label for="body" class="control-label">Contenu</label>
-                <textarea name="body" id="body" cols="10" rows="10" class="form-control" required></textarea>
-                {!! $errors->first('body','<span class="help-block">:message</span>') !!}                
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
-            </div>
-        </form>
+        @include('posts.form')
     </div>
 </div>
 

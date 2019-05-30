@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Flashy;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\PostsLikes;
 use App\User;
 use App\Models\CommentsPost;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Response;
 
 class PostsController extends Controller
 {
@@ -24,7 +27,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::with('category')->published()->orderBy('created_at', 'desc')->paginate(6);
+        //  dd(auth()->user());
         return view('posts.index', compact('posts'));
     }
 
@@ -39,7 +43,10 @@ class PostsController extends Controller
             Flashy::error("Vous etes pas autorisé à effectuer cette action");
             return redirect()->route('blog.index');
         }
-        return view('posts.create');
+        $post = new Post();
+        $categories = Category::all('name','id');
+
+        return view('posts.create',compact('post','categories'));
     }
 
     /**
@@ -50,7 +57,13 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $data = ['title' => $request->title,'body'  => $request->body];
+        $data = [
+            'title' => $request->title,
+            'introduce' => $request->introduce,
+            'body'  => $request->body,
+            'online' => $request->online,
+            'category_id' => $request->category_id
+        ];
 
         auth()->user()->posts()->create($data); 
 
@@ -66,10 +79,17 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-
-        $comments = CommentsPost::with('user')->where(['post_id'=>$post->id])
-                                ->orderBy('created_at', 'desc')->paginate(5);  
-        return view('posts.show',['post'=>$post,'comments'=>$comments]);
+        // dd($post->published());
+        
+        if(!$post->published()){            
+            return redirect()->route('blog.index');
+        }
+        $comments = CommentsPost::with('user')->where(['post_id'=>$post->id])->orderBy('created_at', 'desc')->paginate(5);
+        // dd($nbComments);
+        return view('posts.show',[
+            'post'=>$post,
+            'comments'=>$comments
+        ]);
     }
 
     /**
@@ -84,7 +104,11 @@ class PostsController extends Controller
             Flashy::error("Vous etes pas autorisé à effectuer cette action");
             return redirect()->route('blog.index');
         }
-        return view('posts.edit',compact('post'));
+        $categories = Category::all('name','id');
+        // foreach ($categories as $key => $value) {
+        //     // dd($value->id);
+        //     }
+        return view('posts.edit',compact('post','categories'));
     }
 
     /**
@@ -96,10 +120,8 @@ class PostsController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        $post->update([
-            'title' => $request->title,
-            'body'  => $request->body,
-        ]);
+        // dd($request->online);
+        $post->update($request->all());
         Flashy::message("L'article a été modifié avec succes");
         return redirect()->route('blog.show',$post);
     }
@@ -119,5 +141,40 @@ class PostsController extends Controller
         $post->delete();
         Flashy::error("L'article a été supprimé");
         return redirect()->route('blog.index');
+    }
+
+
+    public function like(Post $post)
+    {
+        $user =  auth()->user();
+        if(!$user){
+            dd($user);
+            return response([
+                'code' => 401,
+                'message' => "vous n'est pas autorisé à effectuer cette action"
+            ],401);
+        }
+        if($post->isLikeByUser($user)){
+            $like = PostsLikes::with('user')->where(['post_id'=>$post->id]);
+            $like->delete();
+            // dd($like);
+            
+            return response([
+                'code' => 200,
+                'message' => 'Like bien supprimer',
+                'likes' => PostsLikes::where(['post_id' => $post->id])->count(),
+            ], 200);
+        }
+        
+        $like = new PostsLikes();
+        $like->user_id = auth()->user()->id;
+        $like->post_id = $post->id;
+        // dd($like);
+        $like->save();
+        return response([
+            'code' => 200,
+            'message' => 'like bien ajouter',
+            'likes' => PostsLikes::where(['post_id' => $post->id])->count(),
+        ],200);
     }
 }

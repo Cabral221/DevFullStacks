@@ -60,8 +60,7 @@ class ForumsController extends Controller
      */
     public function show(Forum $topic)
     {
-        $comments = CommentsForum::with('user')->where(['forum_id'=>$topic->id])
-                                   ->orderBy('created_at', 'desc')->paginate(5);  
+        $comments = CommentsForum::with('user')->where(['forum_id'=>$topic->id])->orderBy('created_at', 'desc')->paginate(5);
         return view('forum.show',compact('topic','comments'));
     }
 

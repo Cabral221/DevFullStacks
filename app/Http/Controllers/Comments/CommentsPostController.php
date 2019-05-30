@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Comments;
 use Flashy;
 use App\Models\Post;
 use App\Models\CommentsPost;
-use App\Http\Requests\CommentsPostRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentsPostRequest;
 
 class CommentsPostController extends Controller
 {
@@ -41,9 +42,11 @@ class CommentsPostController extends Controller
     {
         // $com = ['comment'=>$comment->comment];
         $com = new CommentsPost;
-        $com->user_id = $comment->user()->id;
+        // $com->user_id = $comment->user()->id;
+        $com->post_id = $post->id;
         $com->comment = $comment->comment;
-        $post->comments()->save($com);
+        // $post->comments()->save($com);
+        Auth::user()->comments()->save($com);
       
         Flashy::message("Merci de votre commentaire");
         return redirect()->route('blog.show',$post->slug);
