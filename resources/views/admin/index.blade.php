@@ -14,7 +14,7 @@
             </form> --}}
             {{-- <h2><a href="{{ route('forum.create') }}" class="badge badge-pill badge-primary">Ajouter un sujet</a></h2> --}}
             <h1>Admin dashbord</h1>
-            <h2>T'es connecté en tant qu ' <strong>ADMIN</strong> </h2>
+            <h2>T'es  connecté en tant qu ' <strong>ADMIN</strong> </h2>
         </div>
     </div>
 </div>
