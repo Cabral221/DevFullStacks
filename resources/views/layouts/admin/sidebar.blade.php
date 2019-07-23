@@ -5,11 +5,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p>{{ ucfirst(Auth::user()->name) }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
         </div>
       </div>
       <!-- search form -->
@@ -25,19 +25,49 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="header">BARRE DE NAVIGATION</li>
+        
+        {{-- Validate for dashboard --}}
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>Blog</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Blog</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Forum</a></li>
+            <li class="active"><a href="{{ route('admin.blog.index') }}"><i class="fa fa-circle-o"></i> Articles</a></li>
+            <li><a href="{{ route('admin.blog.categories') }}"><i class="fa fa-circle-o"></i> Catégories</a></li>
+            <li><a href="{{ route('admin.blog.comments') }}"><i class="fa fa-circle-o"></i> Commentaires</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Forum</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Sujets</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Catégories</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Commentaires</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Utilisateurs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ route('admin.user.index') }}"><i class="fa fa-circle-o"></i> Afficher</a></li>
+            <li><a href="{{ route('admin.user.role') }}"><i class="fa fa-circle-o"></i> Rôles</a></li>
+            <li><a href="{{ route('admin.user.permission.index') }}"><i class="fa fa-circle-o"></i> Permissions</a></li>
+          </ul>
+        </li>
+        {{-- End Validate for dashboard --}}
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
@@ -52,15 +82,7 @@
             <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
-        </li>
-        
-        
-        
-        
-        
-        
-        
-        
+        </li>        
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -28,6 +28,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::with('category')->published()->orderBy('created_at', 'desc')->paginate(6);
+        // dd($posts->first()->image);
+        // dd($posts->first()->category->image);
         //  dd(auth()->user());
         return view('posts.index', compact('posts'));
     }
@@ -95,7 +97,7 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  string  $post
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)

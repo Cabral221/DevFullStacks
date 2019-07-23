@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Comment;
 use App\Models\Post;
 use App\Models\Attachment;
 use Illuminate\Support\Str;
@@ -42,11 +43,10 @@ $factory->define(Attachment::class, function(Faker $faker) {
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
-        'introduce' => $faker->sentence(3),
+        'introduce' => implode(',',$faker->paragraphs(3)),
         'body' => implode(',',$faker->paragraphs(20)),
         'online' => 1,
         'category_id' => 1,
-        'user_id' => 1
     ];
 });
 
@@ -55,5 +55,14 @@ $factory->define(CommentsPost::class, function(Faker $faker) {
         'comment' => $faker->sentence,
         'user_id' => 1,
         'post_id' => 1
+    ];
+});
+
+$factory->define(Comment::class, function(Faker $faker) {
+    return [
+        'username' => $faker->username,
+        'email' => $faker->email,
+        'content' => $faker->sentence,
+        'ip' => $faker->ipv4
     ];
 });

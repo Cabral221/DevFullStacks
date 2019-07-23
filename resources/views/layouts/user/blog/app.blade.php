@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 
 {{-- head --}}
+
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 @include('layouts.user.blog.head')
 
 </head>
@@ -43,6 +45,8 @@
         {{-- footer --}}
         @include('layouts.user.blog.footer')
 
+        @include('flashy::message')
+    </div>
 </body>
 
 </html>

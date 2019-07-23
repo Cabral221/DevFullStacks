@@ -1,41 +1,41 @@
 <nav class="navbar navbar-default navbar-fixed-top fadeInDown" data-wow-delay="0.5s">
-            <div class="top-bar smoothie hidden-xs">
-                <div class="container">
-                    <div class="clearfix">
-                        <ul class="list-inline social-links wow pull-left">
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-behance"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
+    <div class="top-bar smoothie hidden-xs">
+        <div class="container">
+            <div class="clearfix">
+                <ul class="list-inline social-links wow pull-left">
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </li>
+                </ul>
 
-                        <div class="pull-right text-right">
-                            <ul class="list-inline">
-                                <li>
-                                    <div><i class="fa fa-envelope-o"></i> email@domain.com</div>
-                                </li>
-                                <li>
-                                    <div class="meta-item"><i class="fa fa-mobile"></i> +44 8780 648 605</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="pull-right text-right">
+                    <ul class="list-inline">
+                        <li>
+                            <div><i class="far fa-envelope"></i> cabraldiop18@gmail.com</div>
+                        </li>
+                        <li>
+                            <div class="meta-item"><i class="fas fa-mobile"></i> +221 77 159 85 41</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </div>
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header page-scroll">
@@ -45,194 +45,75 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand smoothie logo logo-light" href="index.html"><img src="{{ asset('user/assets/img/logo.png')}}" alt="logo"></a>
-                    <a class="navbar-brand smoothie logo logo-dark" href="index.html"><img src="{{ asset('user/assets/img/logo_reverse.png')}}" alt="logo"></a>
+                    <a class="navbar-brand smoothie logo logo-light" href="{{ route('home') }}"><img src="{{ asset('user/assets/img/logo.png')}}" alt="logo"></a>
+                    <a class="navbar-brand smoothie logo logo-dark" href="{{ route('home') }}"><img src="{{ asset('user/assets/img/logo_reverse.png')}}" alt="logo"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="main-navigation">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home - Agency</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index-agency-1.html">Agency - Layout 1</a></li>
-                                        <li><a href="index-agency-2.html">Agency - Layout 2</a></li>
-                                        <li><a href="index-agency-3.html">Agency - Layout 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home - Portfolio</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index-portfolio-1.html">Portfolio - Layout 1</a></li>
-                                        <li><a href="index-portfolio-2.html">Portfolio - Layout 2</a></li>
-
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home - Corporate</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index-corporate-1.html">Corporate - Layout 1</a></li>
-                                        <li><a href="index-corporate-2.html">Corporate - Layout 2</a></li>
-                                        <li><a href="index-corporate-3.html">Corporate - Layout 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home - Landing Page</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index-landing-1.html">Landing Page - Layout 1</a></li>
-                                        <li><a href="index-landing-2.html">Landing Page - Layout 2</a></li>
-
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home - Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index-blog-1.html">Blog - Layout 1</a></li>
-                                        <li><a href="index-blog-2.html">Blog - Layout 2</a></li>
-                                        <li><a href="index-blog-3.html">Blog - Layout 3</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="index-app.html">Home - App</a></li>
-                                <li><a href="index-restaurant.html">Home - Restaurant</a></li>
-                                
-                                <li><a href="index-minimal.html">Home - Minimal</a></li>
-                                <li><a href="index-countdown.html">Home - Coming Soon</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('index') }}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Headers <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="header-1.html">Header 1</a></li>
-                                <li><a href="header-2.html">Header 2</a></li>
-                                <li><a href="header-3.html">Header 3</a></li>
-                                <li><a href="header-4.html">Header 4</a></li>
-                                <li><a href="header-5.html">Header 5</a></li>
-                                <li><a href="header-6.html">Header 6</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
+                        </li>      
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('forum.index') }}">Forum</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Footers <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="footer-1.html">Footer 1</a></li>
-                                <li><a href="footer-2.html">Footer 2</a></li>
-                                <li><a href="footer-3.html">Footer 3</a></li>
-                                <li><a href="footer-4.html">Footer 4</a></li>
-                                <li><a href="footer-5.html">Footer 5</a></li>
-                                <li><a href="footer-6.html">Footer 6</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('e-learning.index') }}">E-Learning</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages - About Us</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="about-us-1.html">About Us - Layout 1</a></li>
-                                        <li><a href="about-us-2.html">About Us - Layout 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages - Services</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="services-1.html">Services - Layout 1</a></li>
-                                        <li><a href="services-2.html">Services - Layout 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages - Contact</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="contact-us-1.html">Contact - Layout 1</a></li>
-                                        <li><a href="contact-us-2.html">Contact - Layout 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="404.html">Pages - 404</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about') }}">About</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Full Grid</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="portfolio-full-grid-4col.html">Full Grid - 4 Columns</a></li>
-                                        <li><a href="portfolio-full-grid-3col.html">Full Grid - 3 Columns</a></li>
-                                        <li><a href="portfolio-full-grid-2col.html">Full Grid - 2 Columns</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Boxed Grid</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="portfolio-boxed-grid-4col.html">Boxed Grid - 4 Columns</a></li>
-                                        <li><a href="portfolio-boxed-grid-3col.html">Boxed Grid - 3 Columns</a></li>
-                                        <li><a href="portfolio-boxed-grid-2col.html">Boxed Grid - 2 Columns</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Full Masonry</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="portfolio-full-masonry-4col.html">Full Masonry - 4 Columns</a></li>
-                                        <li><a href="portfolio-full-masonry-3col.html">Full Masonry - 3 Columns</a></li>
-                                        <li><a href="portfolio-full-masonry-2col.html">Full Masonry - 2 Columns</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio - Boxed Masonry</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="portfolio-boxed-masonry-4col.html">Boxed Masonry - 4 Columns</a></li>
-                                        <li><a href="portfolio-boxed-masonry-3col.html">Boxed Masonry - 3 Columns</a></li>
-                                        <li><a href="portfolio-boxed-masonry-2col.html">Boxed Masonry - 2 Columns</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Single Portfolio</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="single-portfolio-slider.html">Single Portfolio - Slider</a></li>
-                                        <li><a href="single-portfolio-carousel.html">Single Portfolio - Carousel</a></li>
-                                        <li><a href="single-portfolio-video.html">Single Portfolio - Video</a></li>
-                                        <li><a href="single-portfolio-fullscreen-slider.html">Single Portfolio - Fullscreen Slider</a></li>
-                                        <li><a href="single-portfolio-fullscreen-video.html">Single Portfolio - Fullscreen Video</a></li>
-                                        <li><a href="single-portfolio-image-list.html">Single Portfolio - Image List</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog Feeds</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="blog-grid-2col.html">Blog Grid - 2 Column</a></li>
-                                        <li><a href="blog-grid-3col.html">Blog Grid - 3 Column</a></li>
-                                        <li><a href="blog-grid-2col-sidebar.html">Blog Grid - 2 Column Sidebar</a></li>
-                                        <li><a href="blog-grid-3col-sidebar.html">Blog Grid - 3 Column Sidebar</a></li>
-                                        <li><a href="blog-traditional.html">Blog Traditional</a></li>
-                                        <li><a href="blog-traditional-sidebar.html">Blog Traditional Sidebar</a></li>
-                                    </ul>
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('S"inscrire') }}</a>
                                 </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Single Posts</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="single-post-fullwidth.html">Single Post - Full Width</a></li>
-                                        <li><a href="single-post-thin.html">Single Post - Thin</a></li>
-                                        <li><a href="single-post-left-sidebar.html">Single Post - Left Sidebar</a></li>
-                                        <li><a href="single-post-right-sidebar.html">Single Post - Right Sidebar</a></li>
-                                        
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Shop <span class="pe-7s-angle-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="index-shop.html">Home Shop</a></li>
-                                <li><a href="single-product.html">Single Product</a></li>
-                            </ul>
-                        </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                    <span class="badge badge-success">{{ Auth::user()->unreadNotifications->count() }}</span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    @foreach (Auth::user()->unreadNotifications as $notification)
+                                        <li>
+                                            <a href="{{ route('notifications.show',['id'=>$notification->id]) }}" class="dropdown-item">
+                                            {{ ($notification->type)::toText($notification->data) }}
+                                            </a>
+                                        </li>
+                                    @endforeach                                
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position: relative; padding-left: 50px;">
+                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width: 32px;height:32px;postion:absolute; top:10px; left:10px;border-radius:50%;">  
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ route('home') }}"><i class="fa fa-btn fa-user" aria-hidden="true"></i> Tableau de bord</a></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> {{ __('Deconnexion') }}</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"     style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>                                     
+                                </ul>
+                            </li>
+                        @endguest
+                        
                         <li><a href="#search"><i class="pe-7s-search"></i></a></li>
                         <li><a href="javascript:void(0);" class="side-menu-trigger hidden-xs"><i class="fa fa-bars"></i></a></li>
                     </ul>

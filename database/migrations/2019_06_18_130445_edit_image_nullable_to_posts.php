@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserIdToComments extends Migration
+class EditImageNullableToPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUserIdToComments extends Migration
      */
     public function up()
     {
-        Schema::table('comments_posts', function (Blueprint $table) {
-            $table->integer('user_id');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('image')->nullable()->change();
         });
     }
 
@@ -25,8 +25,8 @@ class AddUserIdToComments extends Migration
      */
     public function down()
     {
-        Schema::table('comments_posts', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('image');
         });
     }
 }

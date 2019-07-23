@@ -14,7 +14,7 @@ class AddRoleToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('role')->default(false);
+            $table->boolean('role')->default(0);
             $table->string('confirmation_token')->nullable();
         });
     }

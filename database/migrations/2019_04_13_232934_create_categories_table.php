@@ -17,11 +17,12 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('image');
             $table->timestamps();
         });
 
         Schema::table('posts', function(Blueprint $table){
-            $table->integer('category_id')->unsigned()->index();
+            
         });
     }
 

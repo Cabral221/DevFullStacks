@@ -11,7 +11,7 @@ class Post extends Model
 {
     // use AttachableConcern;
 
-    protected $fillable = ['title','introduce','body','online','category_id'];
+    protected $fillable = ['title','introduce','image','body','online','category_id'];
 
     public function getRouteKeyName()
     {
@@ -50,9 +50,9 @@ class Post extends Model
     /**
      * Get the post that owns the comment.
      */
-    public function user()
+    public function admin()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Admin');
     }
 
     public function likes()

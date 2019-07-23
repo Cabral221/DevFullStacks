@@ -26,4 +26,21 @@ class CommentsPost extends Model
         return $this->belongsTo('App\User')->withDefault(['user_id'=>auth()->user()]);
     }
 
+    public function allFor($id)
+    {
+        $records = self::where(['post_id' => $id])->orderBy('created_at','ASC')->get();
+        $comments = [];
+        $by_id = [];
+        foreach ($records as $record){
+            if($record->reply){
+                $by_id[$record->reply]->attributes['replies'][] = $record;
+            }else{
+                $record->attributes['replies'] = [];
+                $by_id[$record->id] = $record;
+                $comments[] = $record; 
+            }
+        }
+        return $comments;
+    }
+
 }

@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.css') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

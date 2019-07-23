@@ -14,7 +14,7 @@ class AddIntroduceToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->text('introduce')->after('title');
+            
         });
     }
 

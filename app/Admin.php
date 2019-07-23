@@ -20,7 +20,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','confirmation_token','title'
+        'name', 'email', 'password','confirmation_token','title','status','phone',
     ];
 
     /**
@@ -80,6 +80,10 @@ class Admin extends Authenticatable
         return $this->hasMany('App\Models\PostsLikes');
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
 
     public function sendPasswordResetNotification($token)
     {

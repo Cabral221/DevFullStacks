@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EditTypePostStructure extends Migration
+class AddPhoneFieldToAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class EditTypePostStructure extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            // $table->longtext('body');
+        Schema::table('admins', function (Blueprint $table) {
+            // $table->string('phone')->after('email')->unique();
         });
     }
 
@@ -25,8 +25,8 @@ class EditTypePostStructure extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
+        Schema::table('admins', function (Blueprint $table) {
+            $table->dropColumn('phone');
         });
     }
 }

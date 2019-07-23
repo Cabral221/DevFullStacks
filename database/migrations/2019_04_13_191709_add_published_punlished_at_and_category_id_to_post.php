@@ -14,7 +14,7 @@ class AddPublishedPunlishedAtAndCategoryIdToPost extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->boolean('online')->default(false);
+            $table->boolean('online')->default(0);
         });
     }
 

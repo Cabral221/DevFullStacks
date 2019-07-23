@@ -64,22 +64,22 @@
                         <div class="col-md-6 text-left">
                             <ul class="list-inline social-links wow">
                                 <li>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                    <a href="#"><i class="fab fa-behance"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -177,6 +177,9 @@
     <script src="{{ asset('user/assets/js/plugins.js')}}"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="{{ asset('user/assets/js/init.js')}}"></script>
+    
+    {{-- <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script> --}}
+    {{-- <script src="{{ asset('js/jslike.js') }}"></script> --}}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
