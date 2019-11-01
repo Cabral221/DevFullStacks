@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export const state = {
-    comments: []
+    comments: [],
+    reply: 0
 }
 
 export const mutations = {
@@ -31,7 +32,10 @@ export const mutations = {
             let index = state.comments.findIndex((c) => c.id === comment.id)
             state.comments.splice(index, 1)
         }
-    }
+    },
+    REPLY_TO (state, id) {
+        state.reply = id
+    },
 }
 
 export default new Vuex.Store({

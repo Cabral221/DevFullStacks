@@ -46,7 +46,7 @@ Route::get('/post/{post}/like',[
     'uses' => 'PostsController@like'
 ]);
 
-Route::get('categorie/{category}', 'HomeController@category')->name('category');
+Route::get('categorie/{category}', 'PostsController@category')->name('category');
 
 // partie Forum de l'appli
 Route::resource('forum','ForumsController',['parameters'=>[
@@ -113,7 +113,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
     
 
     //Authentication
-    Route::get('/home', 'Admin\AdminController@index')->name('dashboard');
+    Route::get('/', 'Admin\AdminController@index')->name('dashboard');
     Route::get('/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('login');
     Route::post('/login', 'Admin\Auth\AdminLoginController@login')->name('login.submit');
     Route::post('/logout', 'Admin\Auth\AdminLoginController@logout')->name('logout');

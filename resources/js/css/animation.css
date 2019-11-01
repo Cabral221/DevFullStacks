@@ -1,0 +1,10 @@
+.fade-from-right-transition{
+    opacity: 1!important;
+    transition: opacity 3s, transform 10s!important;
+    transform: translateX(0)!important;
+}
+
+.fade-from-right-enter, .fade-from-right-leave{
+    opacity: 0!important;
+    transform: translateX(50px)!important;
+}

@@ -15,7 +15,17 @@ export const getComments = function (store,id,type) {
 } 
 
 export const addComment = function (store,comment) {
-    return axios.post("/comments",comment).then(response => {
+    return axios.post("/comments",comment).then((response) => {
         store.commit('ADD_COMMENT',response.data)
+    })
+}
+
+export const replyTo = function (store, id) {
+    store.commit('REPLY_TO', id)
+}
+
+export const deleteComment = function (store, comment) {
+    return axios.delete('/comments/' + comment.id).then((response) => {
+        store.commit('DELETE_COMMENT', response.data)
     })
 }

@@ -108,7 +108,7 @@
   <!-- /.content-wrapper -->
 @endsection
 @section('footer')
-    <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('admins/ckeditor/ckeditor.js') }}"></script>
     <script>
           // Replace the <textarea id="editor1"> with a CKEditor
           // instance, using default configuration.

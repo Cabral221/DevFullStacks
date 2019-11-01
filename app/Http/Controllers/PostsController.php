@@ -16,7 +16,7 @@ use Illuminate\Http\Response;
 class PostsController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth',['except'=> ['index','show']]);
+        $this->middleware('auth',['except'=> ['index','show','category']]);
     }
 
 
@@ -178,5 +178,11 @@ class PostsController extends Controller
             'message' => 'like bien ajouter',
             'likes' => PostsLikes::where(['post_id' => $post->id])->count(),
         ],200);
+    }
+
+    public function category(Category $category)
+    {
+        $posts =  $category->posts()->paginate(6);
+        return view('posts.index',compact('posts'));
     }
 }

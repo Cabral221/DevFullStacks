@@ -5,19 +5,18 @@
                 <div class="mt60 mb50 single-section-title">
                     <h3>{{ reply == 0 ? 'Commenter' : 'Répondre' }}</h3>
                 </div>
-                <div id="comment_message"></div>
-                    <span class="help-block danger">{{ errors }}</span>
+                <div id="comment_message">
+                    <span class="help-block alert alert-danger" v-if="errors.username">{{ errors.username.join(', ') }}</span>
+                    <span class="help-block alert alert-danger" v-if="errors.email">{{ errors.email.join(', ') }}</span>
+                    <span class="help-block alert alert-danger" v-if="errors.content">{{ errors.content.join(', ') }}</span>
+                </div>
+                    <span class="help-block danger">{{ loading }}</span>
                 <form method="post" id="commentform" class="comment-form" @submit.prevent="sendComment">
-                    <input type="text" class="'form-control col-md-4 ' + { error: errors.username }" v-model="username" placeholder="Nom d'utilisateur *" id="name1" required data-validation-error-msg="Please enter your name." />
-                    <!-- <span class="help-block danger" v-if="errors.username">{{ errors.username.join(', ') }}</span>
-                    <p v-else></p> -->
-                    <input type="text" class="'form-control col-md-4 ' + { error: errors.email }" v-model="email" placeholder="Votre Email *" id="email1" required data-validation-error-msg="Please enter your email address." />
-                    <!-- <span class="help-block danger" v-if="errors.email">{{ errors.email.join(', ') }}</span>
-                    <p v-else> loading.....</p> -->
-                    <textarea v-model="content" class="'form-control ' + { error: errors.content }" id="comments1" placeholder="Votre commentaire *" required data-validation-error-msg="Please enter a message."></textarea>
-                    <!-- <span class="help-block danger" v-if="errors.content">{{ errors.content.join(', ') }}</span>
-                    <p v-else> loading.....</p> -->
+                    <input type="text" :class="'form-control col-md-4 '" v-model="username" placeholder="Nom d'utilisateur *" id="name1" required data-validation-error-msg="Please enter your name." />
+                    <input type="text" :class="'form-control col-md-4 '" v-model="email" placeholder="Votre Email *" id="email1" required data-validation-error-msg="Please enter your email address." />
+                    <textarea v-model="content" :class="'form-control '" id="comments1" placeholder="Votre commentaire *" required data-validation-error-msg="Please enter a message."></textarea>
                     <button type="submit" class="btn btn-primary pull-right">{{ reply == 0 ? 'Commenter' : 'Répondre' }}</button>
+                    <button type="button" class="btn btn-primary pull-left" style="color:red" @click.prevent="cancel()" v-if=" reply > 0"> Annuler</button>
                 </form>
             </div>
         </div>
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-import { addComment } from '../../store/actions'
+import { addComment, replyTo } from '../../store/actions'
 
 export default {
     data(){
@@ -34,37 +33,7 @@ export default {
             username: '',
             email: '',
             content: '',
-            loading: true,
-        }
-    },
-    methods: {
-        addComment,
-        sendComment: function () {
-            // this.errors = {}
-            var vm = this;
-
-            vm.loading = true
-            // this.addComment(this.$store,{
-            //     commentable_id: this.id,
-            //     commentable_type: this.type,
-            //     content: this.content,
-            //     username: this.username,
-            //     email: this.email,
-            //     reply: this.reply
-            // }).then(function (response) {
-                
-            //     console.log(response.data)
-            //     // console.log(this.errors)
-
-            //     vm.errors = response.data
-            //     // this.errors = response.error
-
-            //     // console.log(vm.errors)
-            //     // console.log(response.data)
-            // }).catch(function (error) {
-            //     console.log(error)
-            //     vm.loading = false
-            // })
+            loading: false,
         }
     },
     props: {
@@ -73,6 +42,39 @@ export default {
         reply: {
             type: Number,
             default: 0
+        },
+    },
+    methods: {
+        addComment,
+        replyTo,
+        cancel: function () {
+            this.replyTo(this.$store,0)
+        },
+        sendComment: function () {
+            // this.errors = {}
+            var vm = this;
+            vm.errors = {}
+            vm.loading = true
+            this.addComment(this.$store,{
+                commentable_id: this.id,
+                commentable_type: this.type,
+                content: this.content,
+                username: this.username,
+                email: this.email,
+                reply: this.reply
+            }).catch((error) => {
+                // console.log(error.response.data)
+                vm.errors = error.response.data
+                // console.log(error.response.data)
+            }).then(() => {
+                // console.log("success")
+                vm.loading = false
+                if(Object.keys(vm.errors).length === 0) {
+                    vm.username = ''
+                    vm.email = ''
+                    vm.content = ''
+                }
+            })
         }
     }
 }

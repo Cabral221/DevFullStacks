@@ -1,12 +1,14 @@
 import { comments } from './store/getters'
-// import { getComments } from './store/actions'
+import { reply } from './store/getters'
 
 export default {
     state: {
-        comments: []
+        comments: [],
+        reply: 0
     },
     getters: {
-        comments
+        comments,
+        reply
     },
     mutations: {
         ADD_COMMENTS(state, comments) {
@@ -32,8 +34,11 @@ export default {
                 let index = state.comments.findIndex((c) => c.id === comment.id)
                 state.comments.splice(index, 1)
             }
-        }
-    },
+        },
+        REPLY_TO(state, id) {
+            state.reply = id
+        },
+    }
     // actions: {
     //     addComments: function (store, comments) {
     //         store.commit('ADD_COMMENTS', comments)

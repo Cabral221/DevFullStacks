@@ -179,11 +179,13 @@
                         <div class="mt60 mb50 single-section-title">
                             <h3>{{ $post->comments->count() }} Comment(s)</h3>
                         </div>
-                        <div id="appComment">
-                            <comments 
-                                :id='{{ $post->id }}' 
-                                type='Post'></comments>
-                            {{-- <comments model="Post" id="1"></comments> --}}
+                        <div class="allComment" style="height:1000px;background-color:#DDD">
+                            <div id="appComment">
+                                <comments 
+                                    :id='{{ $post->id }}' 
+                                    type='Post' ip="f528764d624db129b32c21fbca0cb8d6"></comments>
+                                {{-- <comments model="Post" id="1"></comments> --}}
+                            </div>
                         </div>
                         {{-- <div class="media">
                             <div class="pull-left">

@@ -52,7 +52,7 @@ class AttachmentController extends Controller
                 $attachment->save();
                 return $attachment;
             }else{
-            return new JsonResponse(['attachable_id' => 'Ce contenu ne peut pas recevoir de fichier attachés'],422);
+                return new JsonResponse(['attachable_id' => 'Ce contenu ne peut pas recevoir de fichier attachés'],422);
             }
         } else {
             return new JsonResponse(['attachable_type' => 'Ce contenu ne peut pas recevoir de fichier attachés'],422);

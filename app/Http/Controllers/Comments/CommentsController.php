@@ -23,6 +23,7 @@ class CommentsController extends Controller
 
     public function store(StoreCommentRequest $request)
     {
+        // sleep(3);
         $model = Input::get('commentable_type');
         $id = Input::get('commentable_id');
         if(Comment::isCommentable($model,$id)){
@@ -46,6 +47,7 @@ class CommentsController extends Controller
 
     public function destroy($id)
     {
+        sleep(3);
         $comment = Comment::find($id);
 
         if($comment->ip == Request::ip()){
