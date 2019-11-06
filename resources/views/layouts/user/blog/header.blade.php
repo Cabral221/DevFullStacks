@@ -16,10 +16,10 @@
                         <a href="#"><i class="fab fa-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="https://github.com/Cabral221/DevFullStacks"><i class="fab fa-github"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/abdourahmane-diop/"><i class="fab fa-linkedin"></i></a>
                     </li>
                 </ul>
 

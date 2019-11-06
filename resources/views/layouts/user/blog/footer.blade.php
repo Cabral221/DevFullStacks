@@ -76,16 +76,16 @@
                                     <a href="#"><i class="fab fa-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                    <a href="https://github.com/Cabral221/DevFullStacks"><i class="fab fa-github"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://www.linkedin.com/in/abdourahmane-diop/"><i class="fab fa-linkedin"></i></a>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="col-md-6 text-right">
-                            <span class="copyright">Copyright 2019. Designed by DISTINCTIVE THEMES</span>
+                            <span class="copyright">Copyright &copy; {{ date('Y') }} &middot;. Développé par <a class="link-muted" href="https://www.linkedin.com/in/abdourahmane-diop/"><span>@Abdourahmane Diop</span></a></span>
                         </div>
                     </div>
                 </div>
