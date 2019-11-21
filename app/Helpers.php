@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Carbon\Carbon;
 
-class Helpers  
+class Helpers 
 {
     
     public static function formatDate(Carbon $date)

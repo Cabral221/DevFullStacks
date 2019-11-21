@@ -2,11 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Forum extends Model
 {
-    protected $fillable = ['topic'];
+    protected $fillable = ['topic','title'];
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($topic){
+            $topic->slug = Str::slug($topic->title);
+        });
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function setStat()
+    {
+        // dd($this->stat);
+        if($this->stat == 1){
+            return true;
+        }
+        return false;
+    }
 
 
     /**

@@ -7,12 +7,6 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                    </li>
-                    <li>
                         <a href="#"><i class="fab fa-facebook"></i></a>
                     </li>
                     <li>
@@ -45,8 +39,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand smoothie logo logo-light" href="{{ route('home') }}"><img src="{{ asset('user/assets/img/logo.png')}}" alt="logo"></a>
-                    <a class="navbar-brand smoothie logo logo-dark" href="{{ route('home') }}"><img src="{{ asset('user/assets/img/logo_reverse.png')}}" alt="logo"></a>
+                    <a class="navbar-brand smoothie logo logo-light" href="{{ route('home') }}">DevFullStacks</a>
+                    <a class="navbar-brand smoothie logo logo-dark" href="{{ route('home') }}">DFS</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -105,7 +99,7 @@
                                     <li><a href="{{ route('home') }}"><i class="fa fa-btn fa-user" aria-hidden="true"></i> Tableau de bord</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> {{ __('Deconnexion') }}</a>
+                                        document.getElementById('logout-form').submit();"><i class="fa fa-btn fa-sign-out" aria-hidden="true"></i> {{ __('Deconnexion') }}</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"     style="display: none;">
                                             @csrf
                                         </form>
@@ -113,9 +107,7 @@
                                 </ul>
                             </li>
                         @endguest
-                        
-                        <li><a href="#search"><i class="pe-7s-search"></i></a></li>
-                        <li><a href="javascript:void(0);" class="side-menu-trigger hidden-xs"><i class="fa fa-bars"></i></a></li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

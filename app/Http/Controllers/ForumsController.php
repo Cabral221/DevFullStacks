@@ -22,7 +22,7 @@ class ForumsController extends Controller
      */
     public function index()
     {   
-        $topics = Forum::with('user')->orderBy('created_at', 'desc')->paginate(5);   
+        $topics = Forum::with('user')->orderBy('created_at', 'desc')->paginate(10);   
         return view('forum.index',compact('topics'));
     }
 
@@ -44,9 +44,7 @@ class ForumsController extends Controller
      */
     public function store(ForumRequest $request)
     {
-        $topic = new Forum;
-        $topic->topic = $request->topic;
-        auth()->user()->forums()->save($topic); 
+        auth()->user()->forums()->create($request->only('topic','title')); 
 
         Flashy::message("Le sujet a été crée avec succes");
         return redirect()->route('forum.index');
