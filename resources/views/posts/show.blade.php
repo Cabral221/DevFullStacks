@@ -98,7 +98,7 @@
         <div class="section-inner text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 mt30 wow">
+                    <div class="col-sm-8 col-sm-offset-2 mt150 wow">
                         <h2 class="section-heading">{!! $post->title !!}</h2>
                         <div class="item-metas text-muted mb30 white">
                             <span class="meta-item">
