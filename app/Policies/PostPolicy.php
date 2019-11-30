@@ -81,6 +81,12 @@ class PostPolicy
         //
     }
 
+    /**
+     * Determine if user have permission to view and manage categories of posts 
+     *
+     * @param Admin $admin
+     * @return mixed
+     */
     public function category(Admin $admin)
     {
         return $this->getPermission($admin,9);

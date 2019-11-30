@@ -10,7 +10,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Gestion des articles !
+        Gerer les catégories ici !
         <small></small>
       </h1>
       <ol class="breadcrumb">
@@ -29,19 +29,15 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Article</h3>
-              @can('posts.create', Auth::user())
-              <a href="{{ route('admin.blog.create') }}" class="col-lg-offset-5">
-               <button type="button" class="btn btn-success">Ajouter un article</button>
-              </a>
-              @endcan
+              <h3 class="box-title">Catégories</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="col-lg-offset col-lg-8">
                 <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">Liste des articles</h3>
+                      <h3 class="box-title">Data Table With Full Features</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -49,36 +45,24 @@
                         <thead>
                         <tr>
                           <th>S.N°</th>
-                          <th>Titre</th>
-                          <th>Sous titre</th>
-                          <th>Slug</th>
-                          <th>Créer le</th>
-                          <th>En ligne ?</th>
-                          @can('posts.update', Auth::user())
-                            <th>Modifier</th>
-                          @endcan
-                          @can('posts.delete', Auth::user())
-                            <th>Supprimer</th>
-                          @endcan
+                          <th>Nom de la catégorie</th>
+                          <th>URL de la catégorie</th>
+                          <th>Modifier</th>
+                          <th>Supprimer</th>
                         </tr>
                         </thead>
                         <tbody>
-                          @foreach ($posts as $post)
+                          @foreach ($categories as $category)
+                              {{-- {{ dd($category) }} --}}
                               <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $post->title }}</td>
-                                <td>{!! $post->introduce !!}</td>
-                                <td>{{ $post->slug }}</td>
-                                <td>{{ $post->created_at }}</td>
-                                <td>{{ $post->online }}</td>                          
-                                @can('posts.update', Auth::user())
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->slug }}</td>
                                 <td>
-                                  <a href="{{ route('admin.blog.edit',$post) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                                  <a href="{{ route('admin.forum.categories.edit',$category) }}"><span class="glyphicon glyphicon-edit"></span></a>
                                 </td>
-                                @endcan
-                                @can('posts.delete', Auth::user())                                  
                                 <td>
-                                  <form id="delete-form-{{ $post->id }}" method="post" action="{{ route('admin.blog.destroy',$post) }}" style="display: none">
+                                  <form id="delete-form-{{ $category->id }}" method="post" action="{{ route('admin.forum.categories.destroy',$category) }}" style="display: none">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                   </form>
@@ -86,36 +70,51 @@
                                   if(confirm('Etes-vous sûr ?'))
                                   { 
                                     event.preventDefault();
-                                    document.getElementById('delete-form-{{ $post->id }}').submit(); 
+                                    document.getElementById('delete-form-{{ $category->id }}').submit(); 
                                   }else{
                                     event.preventDefault();
                                   }"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
-                                @endcan
                               </tr>
                           @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
                           <th>S.N°</th>
-                          <th>Titre</th>
-                          <th>Sous titre</th>
-                          <th>Slug</th>
-                          <th>Créer le</th>
-                          <th>En lign</th>
-                          @can('posts.update', Auth::user())
-                            <th>Modifier</th>
-                          @endcan
-                          @can('posts.delete', Auth::user())
-                            <th>Supprimer</th>
-                          @endcan
+                          <th>Nom de la catégorie</th>
+                          <th>URL de la catégorie</th>
+                          <th>Modifier</th>
+                          <th>Supprimer</th>
                         </tr>
                         </tfoot>
                       </table>
-                      {{ $posts->links() }}
+                    </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
+              </div>
+              <div class="col-lg-offset col-lg-4">
+                <div class="box">
+                  <div class="box-header">
+                      <h3 class="box-title">Créer une catégorie</h3>
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <!-- form start -->
+                    <form role="form" action="{{ route('admin.forum.categories.store') }}" method="post" class="was-validated" enctype="multipart/form-data">
+                      {{-- <div class="box-body"> --}}
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                          <label for="name">Catégorie</label>
+                          <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" id="name" name="name" placeholder="Le nom de la catégorie" value="{{ old('name') ?? '' }}" required>
+                          {!! $errors->first('name','<div class="valid-feedback">:message</div>') !!}
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- /.box-body -->
@@ -140,7 +139,7 @@
     <script src="{{ asset('admins/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script>
       $(function () {
-        $('#example1').DataTable()
+        $('#example1').DataTable();
         $('#example2').DataTable({
           'paging'      : true,
           'lengthChange': false,
@@ -148,7 +147,7 @@
           'ordering'    : true,
           'info'        : true,
           'autoWidth'   : false
-        })
-      })
+        });
+      });
     </script>
 @endsection

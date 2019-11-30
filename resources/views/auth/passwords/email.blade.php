@@ -1,12 +1,27 @@
-@extends('layouts.base')
+@extends('layouts.user.blog.app')
 
-@section('container')
+@section('header')
+    <section class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="#" data-speed="0.7">
+        <div class="section-inner text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 mt150 wow">
+                        <h2>Bienvenu à la communauté DevFullStacks</h2>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+@section('main-content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 col-md-offset-2">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
+                <div class="card-header"><h2>Restaurer votre mot de passe</h2></div>
+                <br>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -32,8 +47,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="">
+                                <button type="submit" class="btn btn-block btn-primary">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

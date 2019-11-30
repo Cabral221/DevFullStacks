@@ -22,9 +22,9 @@ class AddRolesTableForAdmin extends Migration
 
         Schema::create('admin_role', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('role_id')->unsigned();
+            $table->bigInteger('role_id')->unsigned()->index();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->integer('admin_id')->unsigned();
+            $table->bigInteger('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });

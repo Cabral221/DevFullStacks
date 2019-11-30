@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Flashy;
+use App\User;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\PostsLikes;
-use App\User;
 use App\Models\CommentsPost;
-use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
@@ -82,6 +83,7 @@ class PostsController extends Controller
     public function show(Post $post)
     {
         // dd($post->published());
+        // dd(Storage::disk('local')->url($post->image));
         
         if(!$post->published()){            
             return redirect()->route('blog.index');

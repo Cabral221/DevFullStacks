@@ -10,13 +10,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Gestion des articles !
+        Gestion du forum !
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Forms</a></li>
-        <li class="active">Editors</li>
+        <li class="active">all</li>
       </ol>
     </section>
 
@@ -25,23 +25,21 @@
       <div class="row">
         <div class="col-md-12">
 
-
+         
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Article</h3>
-              @can('posts.create', Auth::user())
-              <a href="{{ route('admin.blog.create') }}" class="col-lg-offset-5">
-               <button type="button" class="btn btn-success">Ajouter un article</button>
+              <h3 class="box-title">Voir tout les sujets</h3>
+              <a href="{{ route('admin.forum.create') }}" class="col-lg-offset-5">
+               <button type="button" class="btn btn-success">Ajouter un sujet</button>
               </a>
-              @endcan
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">Liste des articles</h3>
+                      <h3 class="box-title">Liste des sujets</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -50,35 +48,32 @@
                         <tr>
                           <th>S.N°</th>
                           <th>Titre</th>
-                          <th>Sous titre</th>
+                          <th>Catégorie</th>
+                          <th>sujet</th>
                           <th>Slug</th>
+                          <th>Réponses</th>
                           <th>Créer le</th>
-                          <th>En ligne ?</th>
-                          @can('posts.update', Auth::user())
+                          <th>Résolution</th>
                             <th>Modifier</th>
-                          @endcan
-                          @can('posts.delete', Auth::user())
                             <th>Supprimer</th>
-                          @endcan
                         </tr>
                         </thead>
                         <tbody>
-                          @foreach ($posts as $post)
-                              <tr>
+                          @foreach ($topics as $topic)
+                              <tr class="text-center">
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $post->title }}</td>
-                                <td>{!! $post->introduce !!}</td>
-                                <td>{{ $post->slug }}</td>
-                                <td>{{ $post->created_at }}</td>
-                                <td>{{ $post->online }}</td>                          
-                                @can('posts.update', Auth::user())
+                                <td>{{ $topic->title }}</td>
+                                <td>{{ $topic->category->name }}</td>
+                                <td>{!! $topic->topic !!}</td>
+                                <td>{{ $topic->slug }}</td>
+                                <td>{{ $topic->comments->count() }}</td>
+                                <td>{{ $topic->created_at }}</td>
+                                <td><i class="fa{{ $topic->setStat() ? ' fa-check-circle' : ' fa-times' }}" aria-hidden="true" style="font-size:28px;{{ $topic->setStat() ? 'color:green' : 'color:red' }};"></i></td>
                                 <td>
-                                  <a href="{{ route('admin.blog.edit',$post) }}"><span class="glyphicon glyphicon-edit"></span></a>
-                                </td>
-                                @endcan
-                                @can('posts.delete', Auth::user())                                  
+                                  <a href="{{ route('admin.forum.edit', $topic) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                                </td>                                  
                                 <td>
-                                  <form id="delete-form-{{ $post->id }}" method="post" action="{{ route('admin.blog.destroy',$post) }}" style="display: none">
+                                  <form id="delete-form-{{ $topic->id }}" method="post" action="{{ route('admin.forum.destroy',$topic) }}" style="display: none">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                   </form>
@@ -86,33 +81,30 @@
                                   if(confirm('Etes-vous sûr ?'))
                                   { 
                                     event.preventDefault();
-                                    document.getElementById('delete-form-{{ $post->id }}').submit(); 
+                                    document.getElementById('delete-form-{{ $topic->id }}').submit(); 
                                   }else{
                                     event.preventDefault();
                                   }"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
-                                @endcan
                               </tr>
                           @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
-                          <th>S.N°</th>
-                          <th>Titre</th>
-                          <th>Sous titre</th>
-                          <th>Slug</th>
-                          <th>Créer le</th>
-                          <th>En lign</th>
-                          @can('posts.update', Auth::user())
-                            <th>Modifier</th>
-                          @endcan
-                          @can('posts.delete', Auth::user())
-                            <th>Supprimer</th>
-                          @endcan
+                            <th>S.N°</th>
+                            <th>Titre</th>
+                            <th>Catégorie</th>
+                            <th>sujet</th>
+                            <th>Slug</th>
+                            <th>Réponses</th>
+                            <th>Créer le</th>
+                            <th>Résolution</th>
+                              <th>Modifier</th>
+                              <th>Supprimer</th>
                         </tr>
                         </tfoot>
                       </table>
-                      {{ $posts->links() }}
+                      {{ $topics->links() }}
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->

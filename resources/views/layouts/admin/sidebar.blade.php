@@ -49,8 +49,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Sujets</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Catégories</a></li>
+            <li class="active"><a href="{{ route('admin.forum.index') }}"><i class="fa fa-circle-o"></i> Sujets</a></li>
+          <li><a href="{{ route('admin.forum.categories') }}"><i class="fa fa-circle-o"></i> Catégories</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Commentaires</a></li>
           </ul>
         </li>

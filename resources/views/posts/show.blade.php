@@ -84,7 +84,7 @@
 @extends('layouts.user.blog.app')
 
 @section('head')
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     <style>
         .fa-heart:hover{
