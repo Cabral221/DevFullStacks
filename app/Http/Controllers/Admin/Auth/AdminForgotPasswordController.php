@@ -54,7 +54,7 @@ class AdminForgotPasswordController extends Controller
         // need to show to the user. Finally, we'll send out a proper response.
         $response = $this->broker()->sendResetLink(
             array_merge(
-                $request->only('email'),
+                $request->only('email')
                 // ['confirmation_token' => null]
             )
         );

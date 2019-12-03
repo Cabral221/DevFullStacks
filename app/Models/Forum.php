@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Forum extends Model
 {
-    protected $fillable = ['topic','title'];
+    protected $fillable = ['topic','title','category_forum_id'];
 
     public static function boot()
     {
@@ -46,5 +46,9 @@ class Forum extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function category(){
+        return $this->belongsTo('App\Models\CategoryForum','id');
     }
 }

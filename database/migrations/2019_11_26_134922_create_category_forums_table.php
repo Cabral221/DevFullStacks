@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsTable extends Migration
+class CreateCategoryForumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('category_forums', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('permission_type');
+            $table->string('slug');
             $table->timestamps();
         });
-
-        Schema::create('permission_role', function (Blueprint $table) {
-            $table->integer('role_id');
-            $table->integer('permission_id');
+        
+        Schema::table('forums', function(Blueprint $table) {
+            $table->integer('category_forum_id')->after('slug');
         });
     }
 
@@ -34,6 +32,6 @@ class CreatePermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('category_forums');
     }
 }

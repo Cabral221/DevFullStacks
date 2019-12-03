@@ -77,27 +77,45 @@ Route::post('/update_avatar', 'UserController@update_avatar')->name('update_avat
 
 
 
-// Partie d'administration
-// Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
-//     Route::resource('posts','PostsController');
-// });
 
+/**
+ * Partie d'Administration
+ */
 Route::prefix('admin')->name('admin.')->group(function() {
 
-    // Gestion Admin blog
+    /**
+     * Gestion du blog
+     */
     Route::get('/blog/categories','Admin\PostsController@category')->name('blog.categories');
     Route::get('/blog/categories/{category}/edit','Admin\PostsController@categoryEdit')->name('blog.categories.edit');
     Route::put('/blog/categories/{category}','Admin\PostsController@categoryUpdate')->name('blog.categories.update');
     // Route::delete('blog/categories/{category}','Admin\PostsController@categoryDestroy')->name('blog.categories.destroy');
-    Route::post('/blog/categories/{categories}','Admin\PostsController@categoryDelete')->name('blog.categories.destroy');
+    Route::delete('/blog/categories/{category}','Admin\PostsController@categoryDelete')->name('blog.categories.destroy');
     Route::post('/blog/categories/','Admin\PostsController@categoryStore')->name('blog.categories.store');
-    Route::resource('blog','Admin\PostsController',['parameters'=>[
-        'blog'=>'post'
-    ]]);
+    Route::resource('blog','Admin\PostsController',[
+        'parameters' => [
+            'blog'=>'post'
+        ]
+    ]);
     Route::get('/blog/comments','Admin\PostsController@comment')->name('blog.comments');
     // End Blog
 
-    
+    /**
+     * Gestion du Forum
+     */
+    Route::get('/forum/categories','Admin\ForumController@category')->name('forum.categories');
+    Route::get('/forum/categories/{category}/edit', 'Admin\ForumController@categoryEdit')->name('forum.categories.edit');
+    Route::put('/forum/categories/{category}','Admin\ForumController@categoryUpdate')->name('forum.categories.update');
+    Route::delete('/forum/categories/{category}','Admin\ForumController@categoryDelete')->name('forum.categories.destroy');
+    Route::post('/forum/categories', 'Admin\ForumController@categoryStore')->name('forum.categories.store');
+    Route::resource('forum', 'Admin\ForumController', [
+        'parameters' => [
+            'forum' => 'topic'
+        ]
+    ]);
+
+    // end forum
+
     // Les permissions 
     Route::name('user.')->group(function(){
         // Administrateurs , Role, info 

@@ -42,7 +42,7 @@
 
 .panel > .panel-heading-custom {
     background-color: #888;
-}h
+}
 
 .pagination {
     display: inline-block;
@@ -70,14 +70,20 @@
 .container-forum {
     padding: 20px;
     border: 4px solid #888;
-    border-radius: 25% 10%;
+    border-radius: 1% 1%;
     border-color: #888;
 }
 
-.container-form-forum {
-    background-color: #888;
-    color: white;
+form {
+    padding: 20px 40px;
+    background-color: #d8d8d8;
+    color: #000000;
 }
+
+.image-responsive{
+    width: 300px;
+}
+
 /* end */
 
 /*-----------------------------------------------------------------------------------*/

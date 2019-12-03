@@ -223,7 +223,7 @@ class PostsController extends Controller
         // A continuere ici     
     }
     
-    public function categoryDestroy (Category $category)
+    public function categoryDelete (Category $category)
     {
         $category->delete();
 

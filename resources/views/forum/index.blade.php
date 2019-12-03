@@ -13,7 +13,11 @@
 
 @section('main-content')
 <div class="container">
-    
+    <div class="row">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
     @if (!Auth::guest())
         <hr>
         <div class="row mt-5">
@@ -25,31 +29,36 @@
 
     <hr>
     @if (! $topics->isEmpty())
-        @foreach ($topics as $topic)
         <div class="panel panel-primary">
-            <div class="panel-heading panel-heading-custom">{{ $topic->user->name }}</div>
+            <div class="panel-heading panel-heading-custom text-center">
+                <h4>Derniers sujets</h4>
+            </div>
             <table class="table">
                 <tr>
                     <td>Sujet</td>
                     <td>Réponses</td>
                     <td>Résolution</td>
+                    <td>Auteur</td>
                     <td>Date</td>
                 </tr>
-                <tr>
-                    <td><a href="{{ route('forum.show',$topic) }}"><p style="font-weight:100;">{{ $topic->title }}</p></a></td>
-                    <td>{{ $topic->comments()->count() }}</td>
-                    <td><i class="fa{{ $topic->setStat() ? 's fa-check-circle' : ' fa-times' }}" aria-hidden="true" style="font-size:28px;{{ $topic->setStat() ? 'color:green' : 'color:red' }};"></i></td>
-                    <td>{{ $topic->created_at->format('d/m/Y H:i') }}</td>
-                </tr>
+                @foreach ($topics as $topic)
+                    <tr>
+                        <td><a href="{{ route('forum.show',$topic) }}"><p style="font-weight:700;">{{ $topic->title }}</p></a></td>
+                        <td>{{ $topic->comments()->count() }}</td>
+                        <td><i class="fa{{ $topic->setStat() ? 's fa-check-circle' : ' fa-times' }}" aria-hidden="true" style="font-size:28px;{{ $topic->setStat() ? 'color:green' : 'color:red' }};"></i></td>
+                        <td>{{ $topic->user->name }}</td>
+                        <td>{{ $topic->created_at->format('d/m/Y H:i') }}</td>
+                    </tr>
+                @endforeach
             </table>
         </div>       
-        @endforeach
         {{ $topics->links() }}
     @else
         <p>Pas de sujets pour le moment !</p>
     @endif
+
+   
 </div>
-<i class="fa fa-close"></i>
 @stop
 
 @section('footer')

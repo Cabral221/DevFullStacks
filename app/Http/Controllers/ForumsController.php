@@ -22,6 +22,7 @@ class ForumsController extends Controller
      */
     public function index()
     {   
+        // $categories
         $topics = Forum::with('user')->orderBy('created_at', 'desc')->paginate(10);   
         return view('forum.index',compact('topics'));
     }

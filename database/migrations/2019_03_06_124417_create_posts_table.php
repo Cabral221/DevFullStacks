@@ -21,9 +21,12 @@ class CreatePostsTable extends Migration
             $table->longtext('body');
             $table->string('slug')->unique();
             $table->integer('category_id')->unsigned()->index();
-            $table->string('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins');
+            $table->bigInteger('admin_id')->unsigned()->index();
             $table->timestamps();
+        });
+
+        Schema::table('posts', function($table){
+            $table->foreign('admin_id')->references('id')->on('admins');
         });
     }
 
